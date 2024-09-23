@@ -16,7 +16,7 @@ RUN apt-get install -y \
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
 
 # Add Microsoft repository for PowerShell
-RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
+RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
 
