@@ -16,7 +16,7 @@ RUN apt-get install -y \
 RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
 
 # Add Microsoft repository for PowerShell
-RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
+RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
 
@@ -36,7 +36,9 @@ RUN pwsh -Command "Get-Module -ListAvailable PnP.PowerShell"
 RUN mkdir -p /app
 
 COPY main.ps1 /app/main.ps1
+COPY job.ps1 /app/job.ps1
+COPY schedule.json /app/schedule.json
 
-RUN chmod +x /app/main.ps1
+RUN chmod +x /app/main.ps1 /app/job.ps1
 
 CMD ["pwsh", "-File", "/app/main.ps1"]
